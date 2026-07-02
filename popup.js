@@ -5,5 +5,9 @@ chrome.storage.sync.get('enabled', ({ enabled }) => {
 });
 
 toggle.addEventListener('change', () => {
-  chrome.storage.sync.set({ enabled: toggle.checked });
+  chrome.storage.sync.set({ enabled: toggle.checked }, () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.reload(tabs[0].id);
+    });
+  });
 });
