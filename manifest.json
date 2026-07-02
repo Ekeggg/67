@@ -2,9 +2,13 @@
   "manifest_version": 3,
   "name": "Price Anchor Stripper",
   "version": "1.0",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
-      "matches": ["*://*.amazon.com/*", "*://*.shopee.sg/*"],
+      "matches": ["*://*.amazon.com/*", "*://*.amazon.sg/*"],
       "js": ["content.js"]
     }
   ]
